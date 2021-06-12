@@ -22,7 +22,7 @@ export default {
     path: String,
     activeColor:{
       type:String,
-      default:'red'
+      default:'green'
     }
   },
   data() {
@@ -60,14 +60,14 @@ export default {
 .tab-bar-item {
   flex: 0.5;
   text-align: center;
-  height: 49px;
+  height: 59px;
   font-size: 14px;
 }
 /* 图片设置 */
 .tab-bar-item img {
   height: 30px;
   width: 30px;
-  margin-top: 3px;
+  margin-top: 10px;
   /* 去除像素下面多出的三个像素 */
   vertical-align: middle;
 }
