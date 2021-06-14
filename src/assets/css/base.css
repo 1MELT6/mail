@@ -7,9 +7,9 @@
    引用： font-size : var(--large-size)*/
   --color-text: #666;
   /* 高亮 */
-  --color-high-text: #ff5777;
+  --color-high-text: rgb(32, 226, 129);
   /* 导航栏背景颜色 */
-  --color-tint: #ff8198;
+  --color-tint: rgb(33, 243, 138);
   --color-background: #fff;
   --font-size: 14px;
   --line-height: 1.5;

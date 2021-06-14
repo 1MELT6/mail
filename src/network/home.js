@@ -8,3 +8,14 @@ export function getHomeData(){
 }
 // 首页多个请求可以单独进行封装统一管理耦合降低
 //home.vue面对home.js开发
+
+export function getHomeGoods(){
+    return request({
+        url:'/home/data',
+        // 拼接
+        params:{
+            type:'pop',
+            page:3
+        }
+    })
+}
