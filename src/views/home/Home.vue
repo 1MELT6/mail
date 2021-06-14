@@ -5,13 +5,15 @@
     </nav-bar>
 
     <home-swiper :banners="banners" />
-    <!-- <recommend-view :recommends='recommends'/> -->
+    <recommend-view :recommends='recommends'/>
     <feature-view />
+    <!-- 出现错误切换 -->
     <tab-control class="home-tab-control" 
     :titles="['流行', '新款', '精选']"
      @tabClick="tabClick" />
     <good-list :goods="showGoods"/>
-   
+
+    <back-top/>
   </div>
 </template>
 
@@ -20,7 +22,8 @@
 import NavBar from "components/common/navbar/NavBar";
 import TabControl from "components/content/tabControl/TabControl";
 import GoodList from 'components/content/goods/GoodsList'
- 
+import BackTop from 'components/content/backTop/BackTop'
+
 // 额为组件 方法等
 import { getHomeData, getHomeGoods } from "network/home";
 
@@ -40,7 +43,8 @@ export default {
     RecommendView,
     FeatureView,
     TabControl,
-    GoodList
+    GoodList,
+    BackTop
   },
   // 存储请求过来的临时数据
   data() {
@@ -50,11 +54,11 @@ export default {
       banners: [],
       recommends: [],
       goods: {
-        pop: { page: 0, list: [] },
-        new: { page: 0, list: [] },
-        sell: { page: 0, list: [] },
+        'pop': { page: 0, list: [] },
+        'new': { page: 0, list: [] },
+        'sell': { page: 0, list: [] },
       },
-      currentType:'pop'
+      currentType:'new'
     }
   },
     computed:{
@@ -87,6 +91,11 @@ export default {
             this.currentType = 'sell'
             break
         }
+        console.log(index);
+        // this.currentType = Object.keys(this.goods)[index]
+      //  this.currentType = index == 1 ? "pop" : index == 2 ? "new" : "sell"; 
+    // this.currentType = (index < 1) ? 'pop' : (index == 1) ? 'new' : 'sell';
+    
     },
 
     // 网络请求相关方法
@@ -109,7 +118,7 @@ export default {
     },
     getHomeGoods(type){
          const page = this.goods[type].page + 1
-         getHomeGoods("pop", 1).then((res) => {
+         getHomeGoods(type, page).then(res => {
           // 如何把数组放到另一个数组 1、遍历 2、push
           this.goods[type].list.push(...res.data.list)
           this.goods[type].page += 1
@@ -139,4 +148,7 @@ top: 43px;
 /* 顶部navbar的高度 */
 z-index: 9;
 }
+ /* .content{
+   /* height: calc(100% -93px); */
+ /* } */ 
 </style>

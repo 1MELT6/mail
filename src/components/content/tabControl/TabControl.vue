@@ -1,10 +1,11 @@
 <template>
   <div class="tab-control">
     <div v-for="(item, index) in titles"
-         :key="item"
+         :key="index"
          class="tab-control-item"
-         @click="itemClick(index)">
-      <span :class="{active:index === currentIndex}">{{item}}</span>
+         :class="{active:index === currentIndex}"
+         @click="TabItemClick(index)">
+      <span>{{item}}</span>
     </div>
   </div>
 </template>
@@ -26,7 +27,7 @@
       }
     },
     methods:{
-      itemClick(index) {
+      TabItemClick(index) {
         this.currentIndex = index
         // goods点击传递
           this.$emit('tabClick', index)

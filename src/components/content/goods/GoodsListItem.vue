@@ -1,5 +1,5 @@
 <template>
-  <div  class="goods-item">
+  <div  class="goods-item" @click="itemClick" >
       <img :src="goodsItem.show.img" alt="">
       <div class="goods-info">
           <p>
@@ -21,6 +21,18 @@ export default {
                 return []
             }
         }
+    },
+    methods:{
+      itemClick(){
+        // push可以记录历史记录
+        this.$router.push('/detail/'+this.goodsItem.iid)
+        // this.$router.push({
+        //   path:'/detail',
+        //   query:{
+
+        //   }
+        // })
+      }
     }
 }
 </script>

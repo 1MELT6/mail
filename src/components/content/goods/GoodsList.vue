@@ -1,12 +1,7 @@
 <template>
   <div class="goods">
       <goods-list-item v-for="(item,index) in goods" :key="index" :goods-item="item"/>
-     <h2>李贝彩</h2>
-     <h2>李贝彩</h2>
-     <h2>李贝彩</h2>
-     <h2>李贝彩</h2>
-     <h2>李贝彩</h2>
-     <h2>李贝彩</h2>
+   
   </div>
 </template>
 
