@@ -9,6 +9,11 @@ export function getDetail(iid){
     })
 }
 
+export function getRecommend(){
+    return request({
+        url:'/recommend'
+    })
+}
 
 // ES6写法,封装成一个对象/组件
 // DetailBaseInfo 基本信息

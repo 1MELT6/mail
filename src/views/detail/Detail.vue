@@ -1,13 +1,16 @@
 <template>
   <div id="detail">
-    <detail-nav-bar class="detail-nav" />
+    <detail-nav-bar class="detail-nav" @titleClick="titleClick" />
     <detail-swiper :top-images="topImages" />
     <detail-base-info :goods="goods" />
     <detail-shop-info :shop="shop" />
-    <!-- 驼峰 -->
-    <detail-goods-info :detail-info="detailInfo"/>
-    <detail-param-info :param-info="paramInfo"/>
-    <detail-comment-info/>
+    <!-- 驼峰 若属性和传入值一致，因为属性不分大小写，容易传错 -->
+    <!-- <detail-goods-info :detail-info="detailInfo"/> -->
+    <detail-param-info :param-info="paramInfo" />
+    <detail-comment-info :coment-info="commentInfo" />
+    <!-- <goods-list :goods="recommends"/> -->
+    <detail-bottom-bar @addCart="addToCart" />
+    <back-top />
   </div>
 </template>
 
@@ -19,9 +22,18 @@ import DetailShopInfo from "./childComps/DetailShopInfo";
 import DetailGoodsInfo from "./childComps/DetailGoodsInfo";
 import DetailParamInfo from "./childComps/DetailParamInfo";
 import DetailCommentInfo from "./childComps/DetailCommentInfo";
+import DetailBottomBar from "./childComps/DetailBottomBar";
 
+import {
+  getDetail,
+  Goods,
+  Shop,
+  GoodsParam,
+  getRecommend,
+} from "network/detail";
 
-import { getDetail, Goods, Shop,GoodsParam } from "network/detail";
+import GoodsList from "components/content/goods/GoodsList";
+import BackTop from "components/content/backTop/BackTop";
 
 export default {
   components: {
@@ -32,6 +44,9 @@ export default {
     DetailGoodsInfo,
     DetailParamInfo,
     DetailCommentInfo,
+    GoodsList,
+    DetailBottomBar,
+    BackTop,
   },
   data() {
     return {
@@ -40,9 +55,10 @@ export default {
       goods: {},
       shop: {},
       // 对象不能传空
-      detailInfo:{},
-      paramInfo:{},
-      commentInfo:{},
+      detailInfo: {},
+      paramInfo: {},
+      commentInfo: {},
+      recommends: [],
     };
   },
   created() {
@@ -66,17 +82,38 @@ export default {
       this.shop = new Shop(data.shopInfo);
 
       //4、保存商品的详情数据
-      this.detailInfo = data.detailInfo
+      this.detailInfo = data.detailInfo;
 
       //5、获取参数信息
-      this.paramInfo = new GoodsParam(data.itemParams.info,data.itemParams.rule)
-    
-        //6、取出评论信息
-        // 判断是否有评论
-        if(data.rate.cRate !==0){
-            this.commentInfo = data.rate.list[0]
-        }
+      this.paramInfo = new GoodsParam(
+        data.itemParams.info,
+        data.itemParams.rule
+      );
+
+      //6、取出评论信息
+      // 判断是否有评论
+      if (data.rate.cRate !== 0) {
+        this.commentInfo = data.rate.list[0];
+      }
+      //7、获取推荐数据(组件复用goodlist)
+      getRecommend().then((res) => {
+        this.recommends = res.data.list;
+      });
     });
+  },
+  methods: {
+    titleClick(index) {
+
+    },
+    addToCart() {
+        // 1.获取购物车展示的信息
+        const product = {}
+        product.image = this.topImages[0]
+        product.title = this.goosInfo.title
+        product.desc = this.goosInfo.desc
+        product.price = this.newPrice
+        product.iid = this.iid
+    },
   },
 };
 </script>

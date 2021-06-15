@@ -4,7 +4,7 @@
          :key="index"
          class="tab-control-item"
          :class="{active:index === currentIndex}"
-         @click="TabItemClick(index)">
+         @click="itemClick(index)">
       <span>{{item}}</span>
     </div>
   </div>
@@ -27,7 +27,7 @@
       }
     },
     methods:{
-      TabItemClick(index) {
+     itemClick(index) {
         this.currentIndex = index
         // goods点击传递
           this.$emit('tabClick', index)
