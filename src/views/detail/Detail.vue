@@ -14,13 +14,13 @@
     <detail-base-info :goods="goods" />
     <!-- 商品店家信息 -->
     <detail-shop-info :shop="shop" />
+     <!-- 商品评论信息 -->
+    <detail-comment-info :comment-info="commentInfo" />
     <!-- 商品参数信息 -->
     <detail-param-info :param-info="paramInfo" />
     <!-- 驼峰 若属性和传入值一致，因为属性不分大小写，容易传错 -->
     <!-- 商品详情图片信息 -->
     <detail-goods-info :detail-info="detailInfo" />
-    <!-- 商品评论信息 -->
-    <detail-comment-info :coment-info="commentInfo" />
     <!-- 推荐 -->
     <goods-list :goods="recommends" />
     <!-- 底部工具栏 -->
