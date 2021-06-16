@@ -11,7 +11,6 @@
     <recommend-view :recommends="recommends" />
     <!-- 本周流行 -->
     <feature-view />
-    <!-- 出现错误切换 -->
     <!-- 流行切换 -->
     <tab-control
       class="home-tab-control"
@@ -142,7 +141,7 @@ export default {
   /* background-color:var(--color-tint) ; */
   color: white;
   /* 固定nav */
-  position: fixed;
+  position: sticky;
   left: 0;
   right: 0;
   top: 0;

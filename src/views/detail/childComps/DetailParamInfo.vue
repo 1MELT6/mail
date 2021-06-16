@@ -56,7 +56,7 @@
     border-top: 1px solid rgba(0,0,0,.1);
   }
   .param-value {
-    color: #eb4868
+    color: #30292b
   }
   .info-img img {
     width: 100%;

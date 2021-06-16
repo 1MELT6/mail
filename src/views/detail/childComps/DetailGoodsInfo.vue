@@ -20,7 +20,7 @@
       detailInfo: {
         type: Object,
         default(){
-            return {}
+            return{}
         }
       }
     }
@@ -29,16 +29,18 @@
 
 <style scoped>
   .goods-info {
+    position: relative;
     padding: 20px 0;
     border-bottom: 5px solid #f2f5f8;
   }
+  /* 商品成分 */
   .info-desc {
     padding: 0 15px;
   }
   .info-desc .start, .info-desc .end {
-    width: 90px;
+    width: 250px;
     height: 1px;
-    background-color: #a3a3a5;
+    background-color: #4dd6a2;
     position: relative;
   }
   .info-desc .start {

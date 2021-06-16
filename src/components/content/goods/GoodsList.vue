@@ -29,7 +29,7 @@ export default {
     flex-wrap: wrap;
     justify-content: space-around;
     background-color: var(--color-background);
-
+     margin-bottom: 60px;
     padding: 2px;
   }
 

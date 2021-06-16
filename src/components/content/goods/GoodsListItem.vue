@@ -48,6 +48,7 @@ export default {
     position: relative;
     /* 屏幕适应不同 百分比最合适 */
     width: 48%;
+    
   }
 
   .goods-item img {
@@ -63,6 +64,7 @@ export default {
     right: 0;
     overflow: hidden;
     text-align: center;
+  
   }
 
   .goods-info p {
@@ -80,7 +82,7 @@ export default {
   }
 
   .goods-info .collect {
-    position: relative;
+     position: relative;
   }
 
   .goods-info .collect::before {

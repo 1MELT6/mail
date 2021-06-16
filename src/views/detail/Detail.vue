@@ -1,15 +1,31 @@
 <template>
   <div id="detail">
     <detail-nav-bar class="detail-nav" @titleClick="titleClick" />
+    <!-- 测试添加购物车 -->
+    <!-- <ul>
+        <li :key="index" v-for="(item,index) in $store.state.cartList">
+    {{item}}
+         </li>
+    </ul> -->
+
+    <!-- 轮播图 -->
     <detail-swiper :top-images="topImages" />
+    <!-- 商品基本信息 -->
     <detail-base-info :goods="goods" />
+    <!-- 商品店家信息 -->
     <detail-shop-info :shop="shop" />
-    <!-- 驼峰 若属性和传入值一致，因为属性不分大小写，容易传错 -->
-    <!-- <detail-goods-info :detail-info="detailInfo"/> -->
+    <!-- 商品参数信息 -->
     <detail-param-info :param-info="paramInfo" />
+    <!-- 驼峰 若属性和传入值一致，因为属性不分大小写，容易传错 -->
+    <!-- 商品详情图片信息 -->
+    <detail-goods-info :detail-info="detailInfo" />
+    <!-- 商品评论信息 -->
     <detail-comment-info :coment-info="commentInfo" />
-    <!-- <goods-list :goods="recommends"/> -->
+    <!-- 推荐 -->
+    <goods-list :goods="recommends" />
+    <!-- 底部工具栏 -->
     <detail-bottom-bar @addCart="addToCart" />
+    <!-- 返回顶部 -->
     <back-top />
   </div>
 </template>
@@ -102,17 +118,19 @@ export default {
     });
   },
   methods: {
-    titleClick(index) {
-
-    },
+    titleClick(index) {},
     addToCart() {
-        // 1.获取购物车展示的信息
-        const product = {}
-        product.image = this.topImages[0]
-        product.title = this.goosInfo.title
-        product.desc = this.goosInfo.desc
-        product.price = this.newPrice
-        product.iid = this.iid
+      // 1.获取购物车展示的信息
+      const product = {};
+      product.image = this.topImages[0];
+      product.title = this.goodsInfo.title;
+      product.desc = this.goodsInfo.desc;
+      product.price = this.goodsInfo.realPrice;
+      product.iid = this.iid;
+
+      // 2.添加到购物车
+      // (vuex管理,可以理解先把加入的购物车放入临沭存储)
+      this.$store.commit("addCart", product);
     },
   },
 };
@@ -122,7 +140,7 @@ export default {
 /* 頂部固定 */
 .detail-nav {
   position: sticky;
-  top: 0.1px;
+  top: 0.01px;
   /* 顶部navbar的高度 */
   background-color: #fff;
   z-index: 9;
