@@ -1,6 +1,6 @@
 module.exports =
 {
-     // 避免Eslint报错
+     // 避免Eslint报错,多装了eslint  
      lintOnSave: false,
     configureWebpack:{
         resolve:{

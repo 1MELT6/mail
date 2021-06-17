@@ -1,19 +1,22 @@
 <template>
-  <div class="cart">
-    <nav-bar>
-      <div slot="center">购物车{{ cartCount }}</div>
+  <div id="cart">
+    <nav-bar class="nav-bar">
+      <div slot="center">购物车({{ cartCount }})</div>
+    </nav-bar>
       <cart-list class="cart-list" :cart-list="cartList"></cart-list>
       <bottom-bar></bottom-bar>
-    </nav-bar>
   </div>
 </template>
 
 <script>
 import NavBar from "components/common/navbar/NavBar";
-
+import CartList from './childComps/CartList'
+import BottomBar from './childComps/BottomBar'
 export default {
   components: {
     NavBar,
+    CartList,
+    BottomBar
   },
   computed: {
     cartList() {
@@ -34,4 +37,15 @@ export default {
   font-weight: 700;
   color: #fff;
 }
+ #cart {
+    /*position: relative;*/
+    height: 100vh;
+  }
+
+.cart-list {
+    position: absolute;
+    top: 44px;
+    bottom: 49px;
+    width: 100%;
+  }
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div id="detail">
+    <div>{{$store.state.cartList.length}}</div>
     <detail-nav-bar class="detail-nav" @titleClick="titleClick" />
     <!-- 测试添加购物车 -->
     <!-- <ul>
@@ -24,7 +25,7 @@
     <!-- 推荐 -->
     <goods-list :goods="recommends" />
     <!-- 底部工具栏 -->
-    <detail-bottom-bar @addCart="addToCart" />
+     <detail-bottom-bar @addToCart="addToCart"></detail-bottom-bar>
     <!-- 返回顶部 -->
     <back-top />
   </div>
@@ -83,6 +84,7 @@ export default {
 
     // 2、根据iid请求详情数据(network)
     getDetail(this.iid).then((res) => {
+      // console.log(res);
       // 1、获取顶部的图片轮播数据
       const data = res.result;
       this.topImages = data.itemInfo.topImages;
@@ -119,18 +121,20 @@ export default {
   },
   methods: {
     titleClick(index) {},
+    hhh(){
+      console.log(kkkkkkkkkkkkkkkkk);
+    },
     addToCart() {
       // 1.获取购物车展示的信息
-      const product = {};
-      product.image = this.topImages[0];
-      product.title = this.goodsInfo.title;
-      product.desc = this.goodsInfo.desc;
-      product.price = this.goodsInfo.realPrice;
-      product.iid = this.iid;
-
+     const obj = {}
+       obj.iid = this.iid;
+        obj.imgURL = this.topImages[0]
+        obj.title = this.goods.title
+        obj.desc = this.goods.desc;
+        obj.newPrice = this.goods.nowPrice;
       // 2.添加到购物车
       // (vuex管理,可以理解先把加入的购物车放入临沭存储)
-      this.$store.commit("addCart", product);
+      this.$store.commit("addCart", obj);
     },
   },
 };

@@ -47,6 +47,7 @@
 
   .left {
     float: left;
+    width: 100px;
   }
 
   #user-info .arrow-svg {
@@ -62,7 +63,7 @@
 
   #user-info .login-info .phone {
     position: relative;
-
+    width: 100px;
     font-size: 13px;
     margin-top: 5px;
     margin-left: 15px;
