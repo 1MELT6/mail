@@ -3,7 +3,11 @@
     <CheckButton class="select-all" @checkBtnClick="checkBtnClick" v-model="isSelectAll"></CheckButton>
     <span>全选</span>
     <span class="total-price">合计: ¥{{totalPrice}}</span>
-    <span class="buy-product">去计算({{$store.getters.cartCount}})</span>
+    <span class="buy-product" > 
+      <!-- @click="payClick" -->
+      <a href="../../pay/Pay.html" >购买</a>
+      
+      </span>
   </div>
 </template>
 
@@ -43,7 +47,10 @@
             item.checked = false;
           });
         }
-      }
+      },
+      // payClick(){
+      //   this.$router.push('/pay')
+      // }
     }
 	}
 </script>
@@ -74,11 +81,12 @@
   .bottom-menu .total-price {
     margin-left: 15px;
     font-size: 16px;
-    color: #666;
+    color: orangered;
+
   }
 
   .bottom-menu .buy-product {
-    background-color: orangered;
+    background-color:var(--color-tint);
     color: #fff;
     width: 100px;
     height: 44px;

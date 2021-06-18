@@ -6,6 +6,7 @@
       <cart-list class="cart-list" :cart-list="cartList"></cart-list>
       <bottom-bar></bottom-bar>
   </div>
+  
 </template>
 
 <script>

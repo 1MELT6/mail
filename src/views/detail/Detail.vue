@@ -1,6 +1,5 @@
 <template>
   <div id="detail">
-    <div>{{$store.state.cartList.length}}</div>
     <detail-nav-bar class="detail-nav" @titleClick="titleClick" />
     <!-- 测试添加购物车 -->
     <!-- <ul>
@@ -121,9 +120,6 @@ export default {
   },
   methods: {
     titleClick(index) {},
-    hhh(){
-      console.log(kkkkkkkkkkkkkkkkk);
-    },
     addToCart() {
       // 1.获取购物车展示的信息
      const obj = {}

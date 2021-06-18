@@ -8,7 +8,7 @@
       </slot>
       <div class="login-info left">
         <slot name="user-nickname">
-          <div>登录/注册</div>
+          <div @click="userClick">登录/注册</div>
         </slot>
         <div class="phone">
           <span>
@@ -24,7 +24,11 @@
 
 <script>
 	export default {
-		name: "UserInfo"
+	 methods:{
+     userClick(){
+       this.$router.push('/login')
+     }
+   }
 	}
 </script>
 
