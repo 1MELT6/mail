@@ -44,12 +44,11 @@
         this.isAuth="false";//修改登录状态
         localStorage.setItem('s',this.isAuth);
         this.$router.push('/profile');
-        console.log(isAuth);
       },
-      // getS(){
-      //   this.isAuth = localStorage('s')
-      //   console.log('s');
-      // }
+      getS(){
+        this.isAuth = localStorage.getItem('s');
+        return this.isAuth
+      }
     }
    }
 	
@@ -110,9 +109,9 @@
   margin-top: -3px;
   margin-left: -100px;
   margin-right: -100px;
-  background-color:rgb(245, 163, 163);
+  background-color:rgb(207, 240, 210);
   position: relative;
-   color: white;
+   color: rgb(117, 115, 223);
  border: none;
 }
 </style>

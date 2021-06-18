@@ -14,10 +14,10 @@
     <detail-base-info :goods="goods" />
     <!-- 商品店家信息 -->
     <detail-shop-info :shop="shop" />
-     <!-- 商品评论信息 -->
-    <detail-comment-info :comment-info="commentInfo" />
     <!-- 商品参数信息 -->
     <detail-param-info :param-info="paramInfo" />
+     <!-- 商品评论信息 -->
+    <detail-comment-info :comment-info="commentInfo" />
     <!-- 驼峰 若属性和传入值一致，因为属性不分大小写，容易传错 -->
     <!-- 商品详情图片信息 -->
     <detail-goods-info :detail-info="detailInfo" />
@@ -75,6 +75,7 @@ export default {
       paramInfo: {},
       commentInfo: {},
       recommends: [],
+      themeTopYs:[0,1000,2000,3000]
     };
   },
   created() {
@@ -119,7 +120,10 @@ export default {
     });
   },
   methods: {
-    titleClick(index) {},
+    titleClick(index) {
+      // console.log(index);
+      window.scrollTo(0,this.themeTopYs[index])
+    },
     addToCart() {
       // 1.获取购物车展示的信息
      const obj = {}

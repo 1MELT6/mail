@@ -3,10 +3,7 @@
     <CheckButton class="select-all" @checkBtnClick="checkBtnClick" v-model="isSelectAll"></CheckButton>
     <span>全选</span>
     <span class="total-price">合计: ¥{{totalPrice}}</span>
-    <span class="buy-product" > 
-      <!-- @click="payClick" -->
-      <a href="../../pay/Pay.html" >购买</a>
-      
+    <span class="buy-product" @click="payClick"> 购买
       </span>
   </div>
 </template>
@@ -48,9 +45,9 @@
           });
         }
       },
-      // payClick(){
-      //   this.$router.push('/pay')
-      // }
+      payClick(){
+        this.$router.push('/pay')
+      }
     }
 	}
 </script>

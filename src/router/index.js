@@ -6,7 +6,7 @@ const Home = () => import('../views/home/Home')
 const Cart= () => import('../views/cart/Cart')
 const Profile = () => import('../views/profile/Profile')
 const Detail = () => import('../views/detail/Detail')
-// const Pay= () => import('../views/pay/Pay')
+const Pay= () => import('../views/pay/Pay')
 const Register = () => import('../views/user/Register')
 const Login = () => import('../views/user/Login')
 
@@ -33,10 +33,10 @@ const routes = [
       path:'/cart',
       component:Cart,
     },
-    // {
-    //   path:'/pay',
-    //   component:Pay
-    // },
+    {
+      path:'/pay',
+      component:Pay
+    },
    
     {
       path:'/register',
