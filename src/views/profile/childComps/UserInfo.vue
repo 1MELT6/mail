@@ -8,13 +8,15 @@
       </slot>
       <div class="login-info left">
         <slot name="user-nickname">
-          <div @click="userClick">登录/注册</div>
+          <div> <h3 @click="userClick" v-if="isAuth">登录/注册</h3>
+           <h3 v-else>{{name}} <button @click.prevent="logout">退出</button></h3> 
+           </div>
         </slot>
         <div class="phone">
           <span>
             <svg data-v-735ff1be="" fill="#fff" class="icon-mobile"><use data-v-735ff1be="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#mobile"></use></svg>
           </span>
-          <slot name="user-phone">暂无绑定手机号</slot>
+          <slot name="user-phone" ><p v-if="isAuth">暂无绑定手机号</p> <p v-else>{{tel}}</p></slot>
         </div>
       </div>
       <svg data-v-735ff1be="" fill="#fff" class="arrow-svg right"><use data-v-735ff1be="" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#arrow-right"></use></svg>
@@ -24,12 +26,33 @@
 
 <script>
 	export default {
+    data(){
+      return{//获取用户信息
+        name:localStorage.getItem('name'),
+        mail:localStorage.getItem('mail'),
+        tel:localStorage.getItem('tel'),
+        isAuth:"",//是否保持登录状态
+      };
+    },
 	 methods:{
      userClick(){
        this.$router.push('/login')
-     }
+     },
+     //当点击退出按钮，将不保存登录状态
+      logout:function()
+      {
+        this.isAuth="false";//修改登录状态
+        localStorage.setItem('s',this.isAuth);
+        this.$router.push('/profile');
+        console.log(isAuth);
+      },
+      // getS(){
+      //   this.isAuth = localStorage('s')
+      //   console.log('s');
+      // }
+    }
    }
-	}
+	
 </script>
 
 <style scoped>
@@ -81,4 +104,15 @@
     left: -15px;
     top: 0px;
   }
+
+  button{
+  float: right;
+  margin-top: -3px;
+  margin-left: -100px;
+  margin-right: -100px;
+  background-color:rgb(245, 163, 163);
+  position: relative;
+   color: white;
+ border: none;
+}
 </style>

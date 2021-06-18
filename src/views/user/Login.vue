@@ -12,7 +12,11 @@
               <div class="item">
                 <label>密码：</label><input type="password" name="password" v-model.trim="password" placeholder="请输入密码">
                 <br/>
-              </div>             
+              </div>   
+              <div class="keep">
+                <input @click="handlesave" id="yes" type="radio" value="0" ><!-- 点击选中 -->
+                <label for="yes">保持登录状态</label>
+              </div>          
           </div>          
         </form>
               <button  type="submit" @click.prevent="handlelogin">登录			</button>
@@ -28,7 +32,7 @@ export default {
     return{
       name:"",//姓名，用v-model绑定监听，将输入的字符串赋值给name变量
       password:"",//密码
-      st:"false",//false为不保存登录
+      s:"false",//false为不保存登录
     };
   },
   methods:{
@@ -55,10 +59,9 @@ export default {
     {
       this.$router.replace('/register')//点击注册按钮，跳转至注册页面
     },
-    //点击保持登录状态触发handlesave
     handlesave:function(){
-      this.st="true";//修改登录状态为true
-      localStorage.setItem('s',this.st);
+      this.s="true";//修改登录状态为true
+      localStorage.setItem('s',this.s);
       console.log(localStorage.s);
     }
   }
@@ -130,6 +133,16 @@ button{
   margin-left: 40px;
   margin-right: 10px;
 
+}
+.keep{
+  color: white;
+}
+.keep input{
+  width: 15px;
+  height: 15px;
+  margin-top: 7px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 
