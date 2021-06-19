@@ -4,7 +4,8 @@ const getters = {
   },
   cartCount(state, getters) {
     return getters.cartList.length
-  }
+  },
+ 
 }
 
 export default getters

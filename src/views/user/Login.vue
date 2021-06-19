@@ -41,18 +41,24 @@ export default {
       if(this.name===localStorage['name'] && this.password===localStorage['password'])
        { 
          this.$router.replace('/home');//如果输入的名字以及密码正确路由跳转至个人页面
-          alert('登录成功进入首页');
+          // alert('登录成功进入首页');
+           this.$toast.show("登录成功进入首页",2000)
        } 
        else if(this.name==='')//名字为空
        {
-         alert('用户名不为空');
+        //  alert('用户名不为空');
+        this.$toast.show("用户名不为空",2000)
        }
        else if(this.password==='')//密码为空
        {
-         alert('密码不为空');
+        //  alert('密码不为空');
+        this.$toast.show("密码不为空",2000)
+
        }
       else{
-        alert('账号不存在，请注册后登录');//查无此号
+        // alert('账号不存在，请注册后登录');//查无此号
+        this.$toast.show("账号不存在，请注册后登录",2000)
+        
         }
     },
     handleregister:function()

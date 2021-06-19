@@ -32,9 +32,13 @@ export default {
     check(){
          var verify = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/;
                 if (!verify.test(this.mail)) {
-                    alert('格式错误,重新输入')
+                    // alert('格式错误,重新输入')
+        this.$toast.show("格式错误,重新输入",2000)
+                    
                 } else{
-                    alert('格式正确，进行下一步操作')
+                    // alert('格式正确，进行下一步操作')
+        this.$toast.show("格式正确，进行下一步操作",2000)
+
                 }      
     },
   //点击完成按钮触发handlefinish
@@ -42,11 +46,15 @@ export default {
     {
       if(localStorage['name']===this.name)
       {
-        alert("用户名已存在");//如果用户名已存在则无法注册
+        // alert("用户名已存在");//如果用户名已存在则无法注册
+        this.$toast.show("用户名已存在",2000)
+
       }
       else if(this.name==='')
       {
-        alert("用户名不能为空");
+        // alert("用户名不能为空");
+        this.$toast.show("用户名不能为空",2000)
+        
       }
       // else if(/^\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/.test(this.mail)){
       //   alert("邮箱格式错误，需包含@")
@@ -57,7 +65,8 @@ export default {
         localStorage.setItem('mail',this.mail);
         localStorage.setItem('tel',this.tel);
         localStorage.setItem('s',"false");
-        alert("注册成功");
+        // alert("注册成功");
+        this.$toast.show("注册成功",2000)
         this.$router.replace('/Login');//完成注册后跳转至登录页面
       }
     }

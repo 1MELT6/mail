@@ -32,7 +32,7 @@
         mail:localStorage.getItem('mail'),
         tel:localStorage.getItem('tel'),
         isAuth:"",//是否保持登录状态
-      };
+      }
     },
 	 methods:{
      userClick(){

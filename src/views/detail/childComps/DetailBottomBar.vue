@@ -27,7 +27,8 @@ export default {
  methods: {
       addToCart() {
         this.$emit('addToCart')
-        alert('添加成功')
+        // alert('添加成功')
+        this.$toast.show("添加成功",2000)
       }
     }
 }
