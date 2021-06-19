@@ -92,15 +92,16 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  background:#3081eb90;
+  background:#a6c9f890;;
   text-align: center;
  
 }
 #contain h1{
-  color: white;
+color: rgb(133, 138, 141);
 }
 .form{
-  color: white;
+  
+color: rgb(133, 138, 141);
   margin-left: 10%;
   margin-top: 60px;
   font-size: 20px;

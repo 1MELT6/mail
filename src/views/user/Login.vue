@@ -94,14 +94,14 @@ export default {
   left: 50%;
   transform: translate(-50%,-50%);
   /* background:var(--color-tint); */
-  background:#3081eb90;
+  background:#a6c9f890;;
   text-align: center;
   padding-top: 50px;
   
 
 }
 .container h1{
-  color: aliceblue;
+  color: rgb(133, 138, 141);
   margin-left: 20px;
 }
 .item {
@@ -112,7 +112,7 @@ export default {
   text-align: left;
 }
 .item label{
-
+color: rgb(133, 138, 141);
   width: 5em;
   margin-right: 1em;
   text-align: right;
