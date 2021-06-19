@@ -2,11 +2,10 @@
   <div id="background">
       <div id="contain">
         <h1>Register</h1>
-
         <div class="form">
           用户名：<input type="text" v-model.trim="name"><br/>
           密码：<input type="password" v-model.trim="password"><br/>
-          邮箱：<input type="email" v-model.trim="mail" ><br/>
+          邮箱：<input type="email" v-model.trim="mail" @blur="check"><br/>
           手机号：<input type="tel" v-model.trim="tel"><br/>
         </div>
         <button @click.prevent="handlefinish">提交</button>
@@ -25,9 +24,19 @@ export default {
       name:"",
       password:"",
       mail:"",
-      tel:""
+      tel:"",
+      verify:""
+
   };
   },methods:{
+    check(){
+         var verify = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/;
+                if (!verify.test(this.mail)) {
+                    alert('格式错误,重新输入')
+                } else{
+                    alert('格式正确，进行下一步操作')
+                }      
+    },
   //点击完成按钮触发handlefinish
     handlefinish:function()
     {
@@ -39,9 +48,9 @@ export default {
       {
         alert("用户名不能为空");
       }
-      else if(this.mail.match(/^\w+@\w+\.\w+$/i)){
-        alert("邮箱格式错误，需包含@")
-      }
+      // else if(/^\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/.test(this.mail)){
+      //   alert("邮箱格式错误，需包含@")
+      // }
       else{//将新用户信息存储到localStorage
         localStorage.setItem('name',this.name);
         localStorage.setItem('password',this.password);

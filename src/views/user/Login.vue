@@ -13,10 +13,10 @@
                 <label>密码：</label><input type="password" name="password" v-model.trim="password" placeholder="请输入密码">
                 <br/>
               </div>   
-              <div class="keep">
-                <input @click="handlesave" id="yes" type="radio" value="0" ><!-- 点击选中 -->
+              <!-- <div class="keep">
+                <input @click="handlesave" id="yes" type="radio" value="0" >
                 <label for="yes">保持登录状态</label>
-              </div>          
+              </div>           -->
           </div>          
         </form>
               <button  type="submit" @click.prevent="handlelogin">登录			</button>
@@ -59,11 +59,11 @@ export default {
     {
       this.$router.replace('/register')//点击注册按钮，跳转至注册页面
     },
-    handlesave:function(){
-      this.s="true";//修改登录状态为true
-      localStorage.setItem('s',this.s);
-      console.log(localStorage.s);
-    }
+    // handlesave:function(){
+    //   this.s="true";//修改登录状态为true
+    //   localStorage.setItem('s',this.s);
+    //   console.log(localStorage.s);
+    // }
   }
 };
 </script>
@@ -83,7 +83,7 @@ export default {
 .container{
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
@@ -91,6 +91,7 @@ export default {
   background:#3081eb90;
   text-align: center;
   padding-top: 50px;
+  
 
 }
 .container h1{

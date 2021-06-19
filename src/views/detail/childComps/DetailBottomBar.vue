@@ -27,6 +27,7 @@ export default {
  methods: {
       addToCart() {
         this.$emit('addToCart')
+        alert('添加成功')
       }
     }
 }
